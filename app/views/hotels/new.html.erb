@@ -8,15 +8,6 @@
     <%= form.label :rooms_count %><br>
     <%= form.number_field :rooms_count %>
   </p>
-
-  <p>
-    <% form.fields_for :rooms  do |f|%>
-      <p>
-        <%= f.label :value %>
-        <%= f.text_field :value %>
-      </p>
-    <% end %>
-  </p>
  
   <p>
     <%= form.submit %>

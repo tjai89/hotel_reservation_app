@@ -1,5 +1,5 @@
 class HotelsController < ApplicationController
-
+  before_action :authenticate_user!
   def index
     @hotels = Hotel.all
   end
@@ -10,7 +10,10 @@ class HotelsController < ApplicationController
 
   def create
     @hotel = Hotel.new(hotel_params)
-
+    @hotel.rooms_count.times do 
+      @hotel.rooms.build
+    end
+    
     if @hotel.save
       redirect_to @hotel
     else

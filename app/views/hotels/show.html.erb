@@ -8,7 +8,17 @@
   <%= @hotel.rooms_count %>
 </p>
 
-<% for room in @hotel.rooms %>
-	<%= @hotel.room.count %>
+<% @hotel.rooms.each do |room| %>
+  <ul>
+	<li><% if room.reserved == false %>
+  <p>Room is free</p>
+<% else %>
+  <p>Room is reserved</p>
+<% end %></li>
+	<li><%= link_to 'Show', room_path(room) %></li>	
+  </ul> 
 <% end %>
-	
+
+
+
+
