@@ -9,23 +9,23 @@
 <h1>Listing hotels</h1>
  
 <table>
-  <tr>
-    <th>Name</th>
-    <th>Rooms count</th>
-    <th>Rooms status: in reserve || free</th>    
-  </tr>
-
-  <% @hotels.each do |hotel| %>
+  <thead>
     <tr>
-      <td style='border:1pt solid black'><%= hotel.name %></td>
-      <td style='border:1pt solid black'><%= hotel.rooms_count %></td>
-      <td style='border:1pt solid black'><%= rooms_reservation_status(hotel.rooms) %></td>  <!-- rooms_reservation_status helper method in application_helper.rb -->      
-      <td style='border:1pt solid black'><%= link_to 'Show', hotel_path(hotel) %></td>
-      <td style='border:1pt solid black'><%= link_to 'Destroy', hotel, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </tr>
-  <% end %>
+      <th>Hotel Name</th>
+      <th>Free Rooms</th>
+      <th>Reserved Rooms</th>    
+    </tr>    
+  </thead>   
+
+  <tbody>
+    <% @hotels.each do |hotel| %>
+      <tr>
+        <td style='border:1pt solid black'><%= hotel.name %></td>
+        <td style='border:1pt solid black'><%= free_hotel_rooms(hotel.rooms) %></td>  <!-- free_hotel_rooms helper method in application_helper.rb -->      
+        <td style='border:1pt solid black'><%= reserved_hotel_rooms(hotel.rooms) %></td>  <!-- reserved_hotel_rooms helper method in application_helper.rb -->      
+        <td style='border:1pt solid black'><%= link_to 'Show', hotel_path(hotel) %></td>
+        <td style='border:1pt solid black'><%= link_to 'Destroy', hotel, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
-
-
-
-

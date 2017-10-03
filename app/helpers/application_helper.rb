@@ -1,12 +1,24 @@
 module ApplicationHelper
-# rooms_reservation_status iterates throught ActiveRecord::Associations::CollectionProxy 
-# and calculates the sum of free rooms aswell as a sum of reserved rooms
-  def rooms_reservation_status(rooms)
-    t = 0
-    f = 0
+# free_hotel_rooms iterates throught ActiveRecord::Associations::CollectionProxy 
+# and calculates the sum of free rooms
+  def free_hotel_rooms(rooms)
+    free = 0
     rooms.each do |r|
-      r.reserved == true ? t+=1 : f+=1
+      if r.reserved == false
+       free+=1
+     end
     end
-    "#{t} || #{f}"
+    free
   end
+# reserved_hotel_rooms iterates throught ActiveRecord::Associations::CollectionProxy 
+# and calculates the sum of reserved rooms
+  def reserved_hotel_rooms(rooms)
+    reserved = 0
+    rooms.each do |r|
+      if r.reserved == true
+        reserved+=1
+      end
+    end
+    reserved
+  end  
 end
