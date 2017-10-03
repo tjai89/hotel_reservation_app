@@ -27,6 +27,14 @@ class RoomsController < ApplicationController
     end        
   end
 
+  def update
+    if @room.update(room_params)
+      redirect_to @room, notice: 'Hotel was successfully updated.'
+    else
+      render :edit
+    end
+  end 
+
   private
 
   def room_params

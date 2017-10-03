@@ -1,20 +1,20 @@
-Room number
+<h1>Reserve Room</h1>
 
 <p>
   <strong>Room status:</strong>
   <p>Reserved: <%= @room.reserved %></p>	
 </p>
-
-<h1>Reserve Room</h1>
-
-
-<%= form_with scope: :room, url: rooms_path, local: true do |form| %>
+ 
+<%= form_with(model: @room) do |form| %>
   <p>
     <%= form.label :reserved %><br>
     <%= form.check_box :reserved %>
   </p>
-
+ 
   <p>
     <%= form.submit %>
   </p>
+ 
 <% end %>
+ 
+<%= link_to 'Back', root_path %>
