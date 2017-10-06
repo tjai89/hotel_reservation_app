@@ -5,13 +5,17 @@
     <th>Name</th>
     <th>Rooms count</th>
   </tr>
- 
+
   <% @hotels.each do |hotel| %>
     <tr>
       <td><%= hotel.name %></td>
       <td><%= hotel.rooms_count %></td>
-      <td><%= link_to 'Show', hotel_path(hotel) %></td>
-      <td><%= link_to 'Destroy', hotel, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% if 
+      <td><%= link_to 'Show', hotel_path(hotel) %></td>       
+      <% if current_user.admin? %>
+        <td><%= link_to 'Destroy', hotel, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <td><%= link_to 'New Hotel', new_hotel_path(hotel) %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
