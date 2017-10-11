@@ -1,6 +1,7 @@
 <h1>Room</h1>
 
-<p>
-  <strong>Room status:</strong>
-  <p>Reserved: <%= @room.reserved %></p>	
-</p>
+<% if @room.reserved %>
+	<strong>Room status: reserved</strong>
+<% else %>
+	<strong>Room status: free</strong>
+<% end %>

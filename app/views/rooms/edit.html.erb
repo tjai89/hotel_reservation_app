@@ -1,20 +1,22 @@
 <h1>Reserve Room</h1>
 
-<p>
-  <strong>Room status:</strong>
-  <p>Reserved: <%= @room.reserved %></p>	
-</p>
- 
-<%= form_with(model: @room) do |form| %>
-  <p>
-    <%= form.label :reserved %><br>
-    <%= form.check_box :reserved %>
-  </p>
- 
-  <p>
-    <%= form.submit %>
-  </p>
- 
+
+<% if @room.reserved %>
+	<strong>Room status: reserved</strong>
+<% else %>
+	<strong>Room status: free</strong>
+
+	<%= form_with(model: @room) do |form| %>
+	  <p>
+	    <%= form.label :reserve %><br>
+	    <%= form.check_box :reserved %>
+	  </p>
+	 
+	  <p>
+	    <%= form.submit %>
+	  </p>
+	 
+	<% end %>	
 <% end %>
- 
+<br> 
 <%= link_to 'Back', root_path %>
